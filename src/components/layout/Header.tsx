@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Search, ShoppingCart, User } from 'lucide-react';
+import { Heart, Search, ShoppingCart, User } from 'lucide-react';
 import { useCartStore } from '@/store/useCartStore';
 import { useRouter } from 'next/navigation';
 
@@ -52,6 +52,9 @@ export default function Header() {
 
           <div className="hidden tablet:flex items-center gap-2 ml-8">
             {/* Efek hover diubah jadi bg-black/5 dan text-zinc-900 biar makin elegan dan kontras */}
+            <Link href="/wishlist" className="p-2 rounded-full text-zinc-600 hover:text-zinc-900 hover:bg-black/5 transition-all">
+              <Heart className="w-5 h-5" />
+            </Link>
             <Link href="/cart" className="relative p-2 rounded-full text-zinc-600 hover:text-zinc-900 hover:bg-black/5 transition-all">
               <ShoppingCart className="w-5 h-5" />
               {cartCount > 0 && (
