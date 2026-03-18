@@ -44,12 +44,14 @@ return (
           />
         </div>
 
-        <img
-          src={imageUrl}
-          alt={name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          loading="lazy"
-        />
+        <Link href={`/product/${id}`} className="block w-full h-full" aria-label={`View details of ${name}`}>
+          <img
+            src={imageUrl}
+            alt={name}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+        </Link>
       </div>
 
       <div className="flex flex-col flex-1 p-3.5">
@@ -74,8 +76,13 @@ return (
           
           {/* Tambahkan shrink-0 agar ukuran tombol terkunci dan tidak tertekan oleh teks harga */}
           <button
-            onClick={() => addToCart({ id, name, price, qty: 1, merchantName })}
-            className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-white border border-zinc-100 shadow-sm text-zinc-700 hover:bg-zinc-900 hover:text-white transition-all active:scale-95"
+            onClick={(e) => {
+              e.preventDefault(); // Mencegah pindah halaman
+              e.stopPropagation(); // Mencegah event klik bocor ke bawah
+              addToCart({ id, name, price, qty: 1, merchantName, imageUrl }); 
+            }}
+            // Tambahkan relative z-20 di sini
+            className="relative z-20 shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-white border border-zinc-100 shadow-sm text-zinc-700 hover:bg-zinc-900 hover:text-white transition-all active:scale-95"
             aria-label="Add to cart"
           >
             <ShoppingCart className="w-4 h-4" />

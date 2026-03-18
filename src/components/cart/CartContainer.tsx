@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { useCartStore, CartItem } from "@/store/useCartStore";
 import { Minus, Plus, Trash2, Store, Check } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 
 export default function CartContainer() {
   const {
@@ -16,6 +17,8 @@ export default function CartContainer() {
   } = useCartStore();
   const [itemToDelete, setItemToDelete] = useState<CartItem | null>(null);
   const [showBulkDeleteModal, setShowBulkDeleteModal] = useState(false);
+
+  const router = useRouter();
 
   // Format ke Rupiah
   const formatPrice = (amount: number) => {
@@ -60,6 +63,12 @@ export default function CartContainer() {
       removeItem(itemToDelete.id);
       setItemToDelete(null);
     }
+  };
+
+  const handleBuyNow = () => {
+    // Logika beli langsung: Masukkan ke state khusus checkout atau bypass keranjang
+    // Untuk sekarang, kita push ke halaman checkout langsung
+    router.push('/checkout');
   };
 
   // UI Jika Keranjang Kosong
@@ -209,6 +218,7 @@ export default function CartContainer() {
             {/* Tombol disabled jika total = 0 (tidak ada yg di-check) */}
             <button
               disabled={getCartTotal() === 0}
+              onClick={handleBuyNow}
               className="w-full py-3 bg-zinc-900 text-white rounded-xl font-medium shadow-md hover:bg-zinc-800 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
             >
               Checkout Selected

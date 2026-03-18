@@ -24,7 +24,7 @@ export default function MerchantCard({ id, name, rating, location, imageUrl }: M
 
         {/* Info Toko */}
         <div className="flex flex-col flex-1 ml-4">
-          <h3 className="text-base font-semibold text-zinc-900 group-hover:text-blue-600 transition-colors">
+          <h3 className="text-base font-semibold text-zinc-900 transition-colors">
             {name}
           </h3>
           <div className="flex items-center gap-3 mt-1 text-xs text-zinc-500">
