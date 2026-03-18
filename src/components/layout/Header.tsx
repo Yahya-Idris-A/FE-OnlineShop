@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Heart, Search, ShoppingCart, User } from 'lucide-react';
+import { Heart, Search, ReceiptText, ShoppingCart, User } from 'lucide-react';
 import { useCartStore } from '@/store/useCartStore';
 import { useRouter } from 'next/navigation';
 
@@ -62,6 +62,9 @@ export default function Header() {
                   {cartCount}
                 </span>
               )}
+            </Link>
+            <Link href="/transactions" className="p-2 rounded-full text-zinc-600 hover:text-zinc-900 hover:bg-black/5 transition-all">
+              <ReceiptText className="w-5 h-5" />
             </Link>
             <Link href="/profile" className="p-2 rounded-full text-zinc-600 hover:text-zinc-900 hover:bg-black/5 transition-all">
               <User className="w-5 h-5" />
