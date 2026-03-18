@@ -25,16 +25,16 @@ export default function ProductCard({ id, name, price, imageUrl, merchantName }:
     }).format(amount);
   };
 
-  const handleAddToCart = () => {
-    addToCart({
-      id,
-      name,
-      price,
-      qty: 1,
-      merchantName,
-    });
-    // Di sini nanti bisa ditambah toast notification "Added to cart!"
-  };
+  // const handleAddToCart = () => {
+  //   addToCart({
+  //     id,
+  //     name,
+  //     price,
+  //     qty: 1,
+  //     merchantName,
+  //   });
+  //   // Di sini nanti bisa ditambah toast notification "Added to cart!"
+  // };
 
 return (
     // Card Container: Kaca putih dengan bayangan sangat halus

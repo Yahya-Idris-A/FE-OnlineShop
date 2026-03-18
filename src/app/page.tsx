@@ -44,6 +44,13 @@ const RANDOM_PRODUCTS = [
     imageUrl: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&q=80',
     merchantName: 'Basic Wear',
   },
+  {
+    id: 'prod-7',
+    name: 'Essential Cotton T-Shirt Oversized Black V2',
+    price: 125000,
+    imageUrl: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&q=80',
+    merchantName: 'Basic Wear',
+  },
 ];
 
 export default function HomePage() {
