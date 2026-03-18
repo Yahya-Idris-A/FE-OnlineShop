@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation'; 
 import { ReceiptText } from 'lucide-react';
 import Link from 'next/link';
 import OrderCard, { OrderData, OrderStatus } from './OrderCard';
@@ -53,7 +54,15 @@ const TABS: { label: string; value: OrderStatus | 'all' }[] = [
 ];
 
 export default function TransactionsContainer() {
-  const [activeTab, setActiveTab] = useState<OrderStatus | 'all'>('all');
+  const searchParams = useSearchParams();
+  const tabQuery = searchParams.get('tab') as OrderStatus | 'all' | null;
+  const [activeTab, setActiveTab] = useState<OrderStatus | 'all'>(tabQuery || 'all');
+
+  useEffect(() => {
+    if (tabQuery) {
+      setActiveTab(tabQuery);
+    }
+  }, [tabQuery]);
 
   // Filter order berdasarkan tab yang diklik
   const filteredOrders = activeTab === 'all' 

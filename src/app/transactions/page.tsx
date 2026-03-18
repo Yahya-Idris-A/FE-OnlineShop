@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
-import TransactionsContainer from '@/components/transactions/TransactionsContainer';
+import type { Metadata } from "next";
+import TransactionsContainer from "@/components/transactions/TransactionsContainer";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: 'My Orders | AsyuraCommerce',
-  description: 'View your transaction history and order status.',
+  title: "My Orders | AsyuraCommerce",
+  description: "View your transaction history and order status.",
 };
 
 export default function TransactionsPage() {
@@ -12,8 +13,13 @@ export default function TransactionsPage() {
       <h1 className="text-xl tablet:text-2xl font-bold text-zinc-900 mb-6 tracking-tight">
         Transaction History
       </h1>
-      
-      <TransactionsContainer />
+      <Suspense
+        fallback={
+          <div className="animate-pulse h-10 w-48 bg-zinc-200 rounded-full" />
+        }
+      >
+        <TransactionsContainer />
+      </Suspense>
     </div>
   );
 }
